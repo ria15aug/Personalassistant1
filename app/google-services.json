@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "741797327321",
+    "firebase_url": "https://personalassistant1-6039a.firebaseio.com",
+    "project_id": "personalassistant1-6039a",
+    "storage_bucket": "personalassistant1-6039a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:741797327321:android:df34f410e6999dbd",
+        "android_client_info": {
+          "package_name": "com.inception.riya.personalassistant1"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "741797327321-vc1snh23sho7pffu1t6iuk6fp3jrjhub.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB-2mhbraHW32nhc8Nizr44nEOwK99DbCk"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
