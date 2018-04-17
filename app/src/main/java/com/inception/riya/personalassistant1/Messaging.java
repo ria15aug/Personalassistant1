@@ -83,4 +83,13 @@ public class Messaging extends AppCompatActivity {
         i.setData(Uri.parse("sms:"));
         startActivity(i);
     }
+
+
+
+    public void msg(View view) {
+        Intent i = new Intent(Intent.ACTION_VIEW);
+        i.setData(Uri.parse("sms:A"));
+        startActivity(i);
+
+    }
 }

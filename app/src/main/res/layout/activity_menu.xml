@@ -10,24 +10,50 @@
     >
 
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        >
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            >
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+
+               >
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_menu"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="10dp"
+                    android:onClick="menu"  />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="menu"
+                    android:textSize="20dp"
+                    android:textColor="#000"
+                    android:layout_marginTop="10dp"/>
+            </LinearLayout>
+
+
+        </RelativeLayout>
 
 
 
-    </RelativeLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
+
 
         >
 
         <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+
+
             >
 
         </RelativeLayout>
@@ -46,6 +72,8 @@
                 android:text="Things to try"
                 android:textColor="#000"
                 android:textSize="30dp"
+                android:background="#e2e8ea"
+                android:layout_marginLeft="5dp"
                 />
         </LinearLayout>
         <LinearLayout
@@ -263,17 +291,18 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_marginTop="10dp">
+            android:layout_marginTop="10dp"
+            android:onClick="logout">
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/ic_phone"
+                android:src="@drawable/ic_logout"
                 android:layout_marginRight="10dp"
                 />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Phone Settings and Background"
+                android:text="Logout"
                 android:textSize="20dp"
                 android:textColor="#000"/>
         </LinearLayout>

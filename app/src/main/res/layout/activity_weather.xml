@@ -48,7 +48,8 @@
             android:text="Changed"
             android:textSize="20dp"
             android:layout_weight="1"
-            android:layout_marginTop="10dp"/>
+            android:layout_marginTop="10dp"
+            android:onClick="change"/>
     </LinearLayout>
     <RelativeLayout
         android:layout_width="match_parent"

@@ -7,17 +7,24 @@ import android.provider.ContactsContract;
  */
 
 public class profiledata {
-    public String name,address, gender;
-    public int age;
+
+    public String name,address,bloodgroup,eyesight,gender , disability;
+    public int age,height;
+
     profiledata()
     {
 
     }
-    profiledata(String name, String address, String gender, int age){
+    profiledata(String name, String address, int height, int age, String bloodgroup, String eyesight, String gender , String disability){
         this.name = name;
         this.address = address;
         this.age = age;
+        this.height = height;
+        this.bloodgroup = bloodgroup;
+        this.eyesight = eyesight;
         this.gender = gender;
+
+        this.disability = disability ;
 
     }
 }

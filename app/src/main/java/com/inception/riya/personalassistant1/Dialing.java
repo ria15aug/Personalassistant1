@@ -2,8 +2,10 @@ package com.inception.riya.personalassistant1;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.speech.RecognizerIntent;
+import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -46,7 +48,7 @@ public class Dialing extends AppCompatActivity {
             String txt = result.get(0);
 
 
-            speech_txt.setText("Calling  "+txt);
+            speech_txt.setText("Calling  " + txt);
 
             Intent i = new Intent(Intent.ACTION_CALL);
             i.setData(Uri.parse("tel:" + txt));
@@ -55,11 +57,6 @@ public class Dialing extends AppCompatActivity {
         }
     }
 
-    public void dial(View view) {
-        Intent i = new Intent(Intent.ACTION_DIAL);
-        i.setData(Uri.parse("Harmeet"));
-        startActivity(i);
-    }
 
     @Override
     protected void onResume() {
@@ -78,6 +75,52 @@ public class Dialing extends AppCompatActivity {
 
 
     }
+
+
+    public void dial(View view) {
+        Intent i = new Intent(Intent.ACTION_DIAL);
+        i.setData(Uri.parse("tel: 9478819774"));
+        startActivity(i);
+    }
+
+    public void call(View view) {
+        Intent i = new Intent(Intent.ACTION_CALL);
+        i.setData(Uri.parse("tel: A"));
+        if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
+            // TODO: Consider calling
+            //    ActivityCompat#requestPermissions
+            // here to request the missing permissions, and then overriding
+            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+            //                                          int[] grantResults)
+            // to handle the case where the user grants the permission. See the documentation
+            // for ActivityCompat#requestPermissions for more details.
+            return;
+        }
+        startActivity(i);
+    }
+
+    public void Call(View view) {
+        Intent i = new Intent(Intent.ACTION_CALL);
+        i.setData(Uri.parse("tel: 9464381360"));
+        if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
+            // TODO: Consider calling
+            //    ActivityCompat#requestPermissions
+            // here to request the missing permissions, and then overriding
+            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+            //                                          int[] grantResults)
+            // to handle the case where the user grants the permission. See the documentation
+            // for ActivityCompat#requestPermissions for more details.
+            return;
+        }
+        startActivity(i);
+    }
+
+    public void contacts(View view) {
+        Intent intent = new Intent(Intent.ACTION_DIAL);
+            startActivity(intent);
+
+        }
 }
+
 
 

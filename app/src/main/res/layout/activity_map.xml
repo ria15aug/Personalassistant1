@@ -44,11 +44,12 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Where is the nearest hotel? Can i park there. "
+        android:text="Show nearby places around me. "
         android:textSize="20dp"
         android:textColor="#000"
         android:layout_marginTop="20dp"
-        android:layout_marginLeft="10dp"/>
+        android:layout_marginLeft="10dp"
+        android:onClick="show_nearby"/>
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

@@ -2,11 +2,13 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.inception.riya.personalassistant1">
 
-
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.CALL_PHONE" />
-    <uses-permission android:name="android.permission.INTERNET"/>
-
-    <uses-permission android:name="android.permission.SEND_SMS"/>
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.SEND_SMS" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
 
     <application
         android:allowBackup="true"
@@ -35,7 +37,15 @@
         <activity android:name=".Settings" />
         <activity android:name=".Settings1" />
         <activity android:name=".Signup" />
-        <activity android:name=".Navigation"></activity>
+        <activity android:name=".Navigation" />
+        <activity android:name=".Signupprofile" />
+        <activity android:name=".Nearbyplaces" />
+        <activity android:name=".Searchaddresses"></activity>
+
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyDmnKk9PSrxGxYNaZfybM3NIxPhn3oK8e0"/>
     </application>
 
 </manifest>

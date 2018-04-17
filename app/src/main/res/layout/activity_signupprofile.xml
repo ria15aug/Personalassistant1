@@ -5,8 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/gradient6"
-    android:orientation="vertical"
-    tools:context="com.inception.riya.personalassistant1.Userprofile">
+    android:orientation="vertical">
 
     <ImageView
         android:layout_width="wrap_content"
@@ -14,7 +13,8 @@
         android:layout_marginLeft="10dp"
         android:layout_marginTop="10dp"
         android:onClick="icon"
-        android:src="@drawable/ic_lefticon" />
+        android:src="@drawable/ic_lefticon"
+        />
 
     <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/profile_image"
@@ -202,19 +202,22 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="male"
-            android:textColor="#000" />
+            android:textColor="#000"
+            android:id="@+id/male"/>
 
         <RadioButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="female"
-            android:textColor="#000" />
+            android:textColor="#000"
+            android:id="@+id/female"/>
 
         <RadioButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="others"
-            android:textColor="#000" />
+            android:textColor="#000"
+            android:id="@+id/others"/>
     </RadioGroup>
 
     <Button

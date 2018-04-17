@@ -8,6 +8,8 @@ import android.view.Gravity;
 import android.view.View;
 import android.widget.TextView;
 
+import com.google.firebase.auth.FirebaseAuth;
+
 public class Menu extends AppCompatActivity {
 
     @Override
@@ -22,7 +24,7 @@ public class Menu extends AppCompatActivity {
     }
 
     public void profile(View view) {
-        Intent i = new Intent(Menu.this,Userprofile.class);
+        Intent i = new Intent(Menu.this,Signupprofile.class);
         startActivity(i);
 
     }
@@ -76,5 +78,18 @@ public class Menu extends AppCompatActivity {
     public void settings(View view) {
         Intent i = new Intent(Menu.this,Settings1.class);
         startActivity(i);
+    }
+
+    public void logout(View view) {
+
+        FirebaseAuth auth = FirebaseAuth.getInstance();
+
+        auth.signOut();
+
+        Intent i = new Intent(Menu.this , MainActivity.class);
+
+        startActivity(i);
+
+        finish();
     }
 }

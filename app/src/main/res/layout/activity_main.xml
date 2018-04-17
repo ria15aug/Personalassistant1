@@ -65,7 +65,8 @@
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
             android:backgroundTint="#d6d2d2"
-            android:background="@drawable/reactangle"/>
+            android:background="@drawable/reactangle"
+            android:id="@+id/email"/>
     </LinearLayout>
 
     <LinearLayout
@@ -96,7 +97,8 @@
             android:layout_marginRight="20dp"
             android:layout_marginTop="10dp"
             android:backgroundTint="#d6d2d2"
-            android:background="@drawable/reactangle"/>
+            android:background="@drawable/reactangle"
+            android:id="@+id/pass"/>
     </LinearLayout>
 
     <LinearLayout

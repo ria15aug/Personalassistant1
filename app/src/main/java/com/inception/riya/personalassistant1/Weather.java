@@ -48,11 +48,19 @@ public class Weather extends AppCompatActivity {
         place_et= findViewById(R.id.place_et);
         cloud_et = findViewById(R.id.cloud_et);
         get_weather();
+
     }
 
     public void get_weather() {
 
-        String url = "http://api.openweathermap.org/data/2.5/weather?lat=31.6&lon=74.87&APPID=8e4d35f79341370b8e448fa3f5d0433e";
+        String city_name = getIntent().getStringExtra("city");
+
+        String url = "http://api.openweathermap.org/data/2.5/weather?q="+city_name+"&APPID=8e4d35f79341370b8e448fa3f5d0433e";
+
+         //String url = "http://api.openweathermap.org/data/2.5/weather?lat=31.6&lon=74.87&APPID=8e4d35f79341370b8e448fa3f5d0433e";
+
+
+
         JSONObject jsonObject = new JSONObject();
         Response.Listener<JSONObject> listener = new Response.Listener<JSONObject>() {
             @Override
@@ -131,5 +139,8 @@ public class Weather extends AppCompatActivity {
 
     public void arrow(View view) {
         finish();
+    }
+
+    public void change(View view) {finish();
     }
 }

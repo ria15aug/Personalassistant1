@@ -7,6 +7,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
+import java.util.ArrayList;
+
 public class Map extends AppCompatActivity {
 
     @Override
@@ -19,6 +21,7 @@ public class Map extends AppCompatActivity {
         finish();
     }
 
+
     public void search_location(View view) {
     }
 
@@ -29,5 +32,12 @@ public class Map extends AppCompatActivity {
     }
 
     public void txt(View view) {
+    }
+
+    public void show_nearby(View view) {
+
+        Intent i = new Intent(Map.this , Nearbyplaces.class);
+
+        startActivity(i);
     }
 }

@@ -28,7 +28,8 @@
             android:layout_height="wrap_content"
             android:text=" Dialing"
             android:textColor="#000"
-            android:textSize="30dp"/>
+            android:textSize="30dp"
+            android:onClick="diall"/>
     </LinearLayout>
 
     <LinearLayout
@@ -43,12 +44,13 @@
             android:textColor="#000"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="20dp"
+            android:onClick="call"
 
             />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Dial Harmeet"
+            android:text="Dial 9478819774"
             android:onClick="dial"
             android:textSize="25dp"
             android:textColor="#000"
@@ -65,11 +67,12 @@
             android:textSize="25dp"
             android:textColor="#000"
             android:layout_marginLeft="10dp"
-            android:layout_marginTop="10dp"/>
+            android:layout_marginTop="10dp"
+            android:onClick="Call"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Show my contact list"
+            android:text="Show my recently dial contacts "
             android:textSize="25dp"
             android:textColor="#000"
             android:layout_marginLeft="10dp"
