@@ -33,33 +33,27 @@
             android:textSize="30dp"
             android:textColor="#000"/>
     </LinearLayout>
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Do i have any new message ?"
-        android:textSize="20dp"
-        android:textColor="#000"
-        android:layout_marginTop="20dp"
-        android:layout_marginLeft="10dp"
-        />
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Send a message to A"
         android:textSize="20dp"
         android:textColor="#000"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="20dp"
         android:layout_marginLeft="10dp"
         android:onClick="msg"
         />
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Reply to the last message"
+        android:text="Message on whatsapp"
         android:textSize="20dp"
         android:textColor="#000"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="10dp"/>
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="10dp"
+        android:onClick="msg_on_whatsapp"/>
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -99,6 +93,7 @@
 
 
     </RelativeLayout>
+
 </LinearLayout>
 
 </LinearLayout>

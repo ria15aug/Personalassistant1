@@ -135,4 +135,10 @@ public class MainActivity extends AppCompatActivity {
         Intent i = new Intent(MainActivity.this,Signup.class);
         startActivity(i);
     }
+
+    public void forget_pass(View view) {
+
+        startActivity(new Intent(MainActivity.this , Forgetpassword.class));
+
+    }
 }

@@ -140,5 +140,6 @@
         android:layout_marginBottom="20dp"
         android:text="Forgot your password?"
         android:textColor="#2538df"
-        android:textStyle="italic" />
+        android:textStyle="italic"
+        android:onClick="forget_pass"/>
 </RelativeLayout>

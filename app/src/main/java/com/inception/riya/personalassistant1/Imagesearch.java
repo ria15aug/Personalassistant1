@@ -1,6 +1,7 @@
 package com.inception.riya.personalassistant1;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.speech.RecognizerIntent;
 import android.support.v7.app.AppCompatActivity;
@@ -9,6 +10,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
@@ -41,16 +43,22 @@ public class Imagesearch extends AppCompatActivity {
 
 
     }
-        public void listen (View view){
-            search_image_btn.setVisibility(View.INVISIBLE);
-            image_name_et.setVisibility(View.INVISIBLE);
-            Intent i = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
-            i.putExtra(RecognizerIntent.EXTRA_PROMPT, "I am listening !!");
+        public void listen (View view) {
+            SharedPreferences sp = getSharedPreferences("settings_info", MODE_PRIVATE);
 
-            startActivityForResult(i, REQUEST_CODE);
+            if (sp.getBoolean("voice_alert", false)) {
+                search_image_btn.setVisibility(View.INVISIBLE);
+                image_name_et.setVisibility(View.INVISIBLE);
+                Intent i = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
+                i.putExtra(RecognizerIntent.EXTRA_PROMPT, "I am listening !!");
+
+                startActivityForResult(i, REQUEST_CODE);
 
 
+            } else {
 
+                Toast.makeText(Imagesearch.this, "voice command are inactive ", Toast.LENGTH_SHORT).show();
+            }
         }
 
         @Override

@@ -9,6 +9,8 @@
     <uses-permission android:name="android.permission.SEND_SMS" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.READ_CALENDAR" />
+    <uses-permission android:name="android.permission.WRITE_CALENDAR" />
 
     <application
         android:allowBackup="true"
@@ -17,7 +19,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name=".Mainpage">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -26,8 +28,9 @@
         </activity>
         <activity android:name=".Userprofile" />
         <activity android:name=".Menu" />
+        <activity android:name=".MainActivity" />
         <activity android:name=".Imagesearch" />
-        <activity android:name=".Bluetooth" />
+        <activity android:name=".music" />
         <activity android:name=".Dialing" />
         <activity android:name=".Messaging" />
         <activity android:name=".Weather" />
@@ -40,12 +43,17 @@
         <activity android:name=".Navigation" />
         <activity android:name=".Signupprofile" />
         <activity android:name=".Nearbyplaces" />
-        <activity android:name=".Searchaddresses"></activity>
-
+        <activity android:name=".Searchaddresses" />
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyDmnKk9PSrxGxYNaZfybM3NIxPhn3oK8e0"/>
+            android:value="AIzaSyDmnKk9PSrxGxYNaZfybM3NIxPhn3oK8e0" />
+
+        <activity android:name=".ShowTrafiicActivity" />
+        <activity android:name=".Forgetpassword"></activity>
+
+
+
     </application>
 
 </manifest>

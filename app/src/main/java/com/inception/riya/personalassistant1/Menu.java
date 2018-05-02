@@ -6,9 +6,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.View;
-import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
+
+import java.util.Calendar;
 
 public class Menu extends AppCompatActivity {
 
@@ -55,8 +56,8 @@ public class Menu extends AppCompatActivity {
         startActivity(i);
     }
 
-    public void bluetooth(View view) {
-        Intent i = new Intent(Menu.this,Bluetooth.class);
+    public void music(View view) {
+        Intent i = new Intent(Menu.this,music.class);
         startActivity(i);
     }
 
@@ -76,7 +77,7 @@ public class Menu extends AppCompatActivity {
     }
 
     public void settings(View view) {
-        Intent i = new Intent(Menu.this,Settings1.class);
+        Intent i = new Intent(Menu.this,Settings.class);
         startActivity(i);
     }
 
@@ -91,5 +92,18 @@ public class Menu extends AppCompatActivity {
         startActivity(i);
 
         finish();
+    }
+
+    public void set_reminder(View view) {
+
+        Calendar cal = Calendar.getInstance();
+        Intent intent = new Intent(Intent.ACTION_EDIT);
+        intent.setType("vnd.android.cursor.item/event");
+        intent.putExtra("beginTime", cal.getTimeInMillis());
+        intent.putExtra("allDay", false);
+        intent.putExtra("rrule", "FREQ=DAILY");
+        intent.putExtra("endTime", cal.getTimeInMillis()+60*60*1000);
+        intent.putExtra("title", "A Test Event from android app");
+        startActivity(intent);
     }
 }

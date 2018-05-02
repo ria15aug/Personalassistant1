@@ -1,7 +1,7 @@
 package com.inception.riya.personalassistant1;
 
-import android.content.ActivityNotFoundException;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.provider.MediaStore;
 import android.speech.RecognizerIntent;
@@ -11,10 +11,11 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
-public class Bluetooth extends AppCompatActivity {
+public class music extends AppCompatActivity {
     private final int REQUEST_CODE = 200;
 
     TextView speech_txt;
@@ -26,22 +27,32 @@ public class Bluetooth extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_bluetooth);
+        setContentView(R.layout.activity_music);
         speech_txt = findViewById(R.id.speech_text);
 
         song_name_et = findViewById(R.id.song_name_et);
-        search_song_btn = findViewById(R.id.loc_search_btn);
+        search_song_btn = findViewById(R.id.song_search_btn);
 
     }
     public void listen(View view) {
 
-        search_song_btn.setVisibility(View.INVISIBLE);
-        song_name_et.setVisibility(View.INVISIBLE);
+        SharedPreferences sp = getSharedPreferences("settings_info", MODE_PRIVATE);
 
-        Intent i = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
-        i.putExtra(RecognizerIntent.EXTRA_PROMPT,"I am listening !!");
+        if (sp.getBoolean("voice_alert", false)) {
 
-        startActivityForResult(i, REQUEST_CODE);
+            search_song_btn.setVisibility(View.INVISIBLE);
+            song_name_et.setVisibility(View.INVISIBLE);
+
+            Intent i = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
+            i.putExtra(RecognizerIntent.EXTRA_PROMPT, "I am listening !!");
+
+            startActivityForResult(i, REQUEST_CODE);
+        }
+
+        else {
+
+            Toast.makeText(music.this , "voice command are inactive " , Toast.LENGTH_SHORT).show();
+        }
     }
 
     @Override

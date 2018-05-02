@@ -1,7 +1,7 @@
 package com.inception.riya.personalassistant1;
-
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.location.Criteria;
@@ -144,28 +144,12 @@ public class Nearbyplaces extends AppCompatActivity implements OnMapReadyCallbac
       //  showCurrentLocation();
     }
 
-    private void showCurrentLocation() {
-        Criteria criteria = new Criteria();
-        String bestProvider = locationManager.getBestProvider(criteria, true);
-        if (ActivityCompat.checkSelfPermission(this,
-                android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED &&
-                ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_COARSE_LOCATION)
-                        != PackageManager.PERMISSION_GRANTED) {
-            return;
-        }
-        Location location = locationManager.getLastKnownLocation(bestProvider);
 
-        if (location != null) {
-            onLocationChanged(location);
-        }
-       /* locationManager.requestLocationUpdates(bestProvider, MIN_TIME_BW_UPDATES,
-                MIN_DISTANCE_CHANGE_FOR_UPDATES , (android.location.LocationListener) this);*/
-    }
 
     private void loadNearByPlaces(final String type , double latitude, double longitude) {
 //YOU Can change this type at your own will, e.g hospital, cafe, restaurant.... and see how it all works
 
-        type.toLowerCase();
+
 
         StringBuilder googlePlacesUrl =
                 new StringBuilder("https://maps.googleapis.com/maps/api/place/nearbysearch/json?");
@@ -254,6 +238,9 @@ public class Nearbyplaces extends AppCompatActivity implements OnMapReadyCallbac
         LatLng latLng = new LatLng(latitude, longitude);
         mMap.addMarker(new MarkerOptions().position(latLng).title("My Location"));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
+
+
+
         mMap.animateCamera(CameraUpdateFactory.zoomTo(15));
 
      //   loadNearByPlaces(latitude, longitude);
@@ -275,12 +262,21 @@ public class Nearbyplaces extends AppCompatActivity implements OnMapReadyCallbac
     }
 
     public void listen(View view) {
+        SharedPreferences sp = getSharedPreferences("settings_info", MODE_PRIVATE);
+
+        if (sp.getBoolean("voice_alert", false)) {
+
+
 
         Intent i = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
         i.putExtra(RecognizerIntent.EXTRA_PROMPT, "I am listening !!");
 
         startActivityForResult(i, 200);
     }
+
+        Toast.makeText(Nearbyplaces.this , "voice command are inactive " , Toast.LENGTH_SHORT).show();
+}
+
 
     @SuppressLint("MissingPermission")
     @Override
@@ -293,10 +289,11 @@ public class Nearbyplaces extends AppCompatActivity implements OnMapReadyCallbac
 
             String txt = result.get(0);
 
-            loadNearByPlaces(txt, 31.629363 , 74.826760);
+            loadNearByPlaces(txt.toLowerCase(), latitude , longitude);
 
 
-          //  loadNearByPlaces( txt  ,latitude , longitude);
+
+            //  loadNearByPlaces( txt  ,latitude , longitude);
 
 
         }

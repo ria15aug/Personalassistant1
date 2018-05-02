@@ -1,31 +1,24 @@
 package com.inception.riya.personalassistant1;
 
-import android.annotation.SuppressLint;
-import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
-import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
-import android.location.LocationListener;
-import android.location.LocationManager;
 import android.speech.RecognizerIntent;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.TextView;
+import android.widget.Toast;
 
-import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.tasks.OnSuccessListener;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
-import java.util.Locale;
 
 public class Getweather extends AppCompatActivity {
     private final int REQUEST_CODE = 200;
@@ -49,11 +42,19 @@ public class Getweather extends AppCompatActivity {
 
 
     public void speech(View view) {
+        SharedPreferences sp = getSharedPreferences("settings_info", MODE_PRIVATE);
+
+        if (sp.getBoolean("voice_alert", false)) {
         Intent i = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
         i.putExtra(RecognizerIntent.EXTRA_PROMPT, "I am listening !!");
 
         startActivityForResult(i, REQUEST_CODE);
     }
+     else {
+
+        Toast.makeText(Getweather.this , "voice command are inactive " , Toast.LENGTH_SHORT).show();
+    }
+}
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {

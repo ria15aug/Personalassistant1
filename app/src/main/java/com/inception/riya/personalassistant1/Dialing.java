@@ -2,6 +2,7 @@ package com.inception.riya.personalassistant1;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.speech.RecognizerIntent;
@@ -10,6 +11,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.text.ParseException;
 import java.util.ArrayList;
@@ -30,11 +32,21 @@ public class Dialing extends AppCompatActivity {
 
 
     public void listen(View view) {
-        Intent i = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
-        i.putExtra(RecognizerIntent.EXTRA_PROMPT, "I am listening !!");
 
-        startActivityForResult(i, REQUEST_CODE);
+        SharedPreferences sp = getSharedPreferences("settings_info", MODE_PRIVATE);
+
+        if (sp.getBoolean("voice_alert", false)) {
+            Intent i = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
+            i.putExtra(RecognizerIntent.EXTRA_PROMPT, "I am listening !!");
+
+            startActivityForResult(i, REQUEST_CODE);
+        }
+
+        Toast.makeText(Dialing.this , "voice command are inactive " , Toast.LENGTH_SHORT).show();
     }
+
+
+
 
     @SuppressLint("MissingPermission")
     @Override
@@ -84,6 +96,9 @@ public class Dialing extends AppCompatActivity {
     }
 
     public void call(View view) {
+        SharedPreferences sp = getSharedPreferences("settings_info", MODE_PRIVATE);
+
+        if (sp.getBoolean("call_alert", false)) {
         Intent i = new Intent(Intent.ACTION_CALL);
         i.setData(Uri.parse("tel: A"));
         if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
@@ -91,15 +106,21 @@ public class Dialing extends AppCompatActivity {
             //    ActivityCompat#requestPermissions
             // here to request the missing permissions, and then overriding
             //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-            //                                          int[] grantResults)
+            //        int[] grantResults)
             // to handle the case where the user grants the permission. See the documentation
             // for ActivityCompat#requestPermissions for more details.
             return;
         }
         startActivity(i);
+        }
+
+        Toast.makeText(Dialing.this , "Calling is inactive " , Toast.LENGTH_SHORT).show();
     }
 
     public void Call(View view) {
+        SharedPreferences sp = getSharedPreferences("settings_info", MODE_PRIVATE);
+
+        if (sp.getBoolean("call_alert", false)) {
         Intent i = new Intent(Intent.ACTION_CALL);
         i.setData(Uri.parse("tel: 9464381360"));
         if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
@@ -114,6 +135,9 @@ public class Dialing extends AppCompatActivity {
         }
         startActivity(i);
     }
+        Toast.makeText(Dialing.this , "Calling is inactive " , Toast.LENGTH_SHORT).show();
+    }
+
 
     public void contacts(View view) {
         Intent intent = new Intent(Intent.ACTION_DIAL);

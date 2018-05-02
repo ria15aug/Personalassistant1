@@ -13,7 +13,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:onClick="bluetooth"
+        android:onClick="Music"
        >
         <ImageView
             android:layout_width="wrap_content"
@@ -27,7 +27,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Bluetooth"
+            android:text="Music"
             android:textSize="30dp"
             />
     </LinearLayout>
@@ -85,7 +85,7 @@
         android:background="@null"
         android:hint="enter song name"
        android:layout_margin="10dp"
-        android:visibility="visible"
+        android:visibility="invisible"
         android:id="@+id/song_name_et"/>
 
     <ImageView
@@ -93,7 +93,7 @@
     android:layout_height="wrap_content"
     android:src="@android:drawable/ic_menu_search"
     android:layout_gravity="right"
-    android:visibility="visible"
+    android:visibility="invisible"
     android:id="@+id/song_search_btn"
     android:layout_marginRight="10dp"
     android:onClick="search_song"
@@ -109,6 +109,7 @@
                 android:layout_height="wrap_content"
                 android:src="@drawable/ic_mic"
                 android:onClick="listen"
+                android:id="@+id/song_button"
                 android:layout_alignParentBottom="true"
                 android:layout_marginBottom="20dp"
                 android:layout_alignParentRight="true"

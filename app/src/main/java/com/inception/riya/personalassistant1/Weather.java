@@ -47,6 +47,10 @@ public class Weather extends AppCompatActivity {
          nineteen_et = findViewById(R.id.nineteen_et);
         place_et= findViewById(R.id.place_et);
         cloud_et = findViewById(R.id.cloud_et);
+
+
+        place_et.setText(getIntent().getStringExtra("city"));
+
         get_weather();
 
     }
@@ -71,23 +75,40 @@ public class Weather extends AppCompatActivity {
                     String weather =  j_object.getString("main");
 
                     weather_et.setText(weather);
+
+                    if(weather.equals("Cloudy"))
+                    {
+                        cloud_et.setImageDrawable(getResources().getDrawable(R.drawable.cloudyw));
+                    }
+
+                    if(weather.equals("Rain"))
+                    {
+                        cloud_et.setImageDrawable(getResources().getDrawable(R.drawable.rainy));
+                    }
+
+                    if(weather.equals("sunny"))
+                    {
+                        cloud_et.setImageDrawable(getResources().getDrawable(R.drawable.sunny));
+
+                    }
+
                     JSONObject temp_json_object = response.getJSONObject("main");
                     Double temp = temp_json_object.getDouble("temp");
                     temp = temp - 275;
 
                     String s = String.format("%.2f", temp);
-                    temp_et.setText(s);
+                    temp_et.setText(s+" C");
                     nineteen_et.setText(s);
                     int humidity =  temp_json_object.getInt("humidity");
 
-                    humidity_et.setText(String.valueOf(humidity));
+                    humidity_et.setText(String.valueOf(humidity)+ " %");
                     int pressure =temp_json_object.getInt("pressure");
 
-                    pressure_et.setText(String.valueOf(pressure));
+                    pressure_et.setText(String.valueOf(pressure)+" mb");
                     JSONObject wind_object =  response.getJSONObject("wind");
                     Double wind = wind_object.getDouble("speed");
 
-                    wind_et.setText(String.valueOf(wind));
+                    wind_et.setText(String.valueOf(wind)+"km/h");
 
                     long sunrise =  response.getJSONObject("sys").getLong("sunrise");
 
