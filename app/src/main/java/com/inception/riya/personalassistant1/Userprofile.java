@@ -6,6 +6,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -21,11 +23,11 @@ import com.google.firebase.database.ValueEventListener;
 
 public class Userprofile extends AppCompatActivity {
 
-    EditText name ,address,  age,height,bloodgroup,eyesight;
+    EditText name ,address,disability_et,  age,height,bloodgroup,eyesight;
 
     RadioGroup gender_radio_group ;
 
-    RadioButton disability_radio_btn ;
+    CheckBox disability_radio_btn ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,9 +41,19 @@ public class Userprofile extends AppCompatActivity {
      height = findViewById(R.id.height_et);
      bloodgroup = findViewById(R.id.blood_et);
      eyesight = findViewById(R.id.eyesight_et);
-
+disability_et =findViewById(R.id.disability_et);
      disability_radio_btn = findViewById(R.id.disability_radio);
-
+disability_radio_btn.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+    @Override
+    public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+        if (b){
+            disability_et.setVisibility(View.VISIBLE);
+        }
+        else {
+            disability_et.setVisibility(View.GONE);
+        }
+    }
+});
      gender_radio_group = findViewById(R.id.gender_radio_group);
     }
 
@@ -57,7 +69,7 @@ public class Userprofile extends AppCompatActivity {
         String height_s = height.getText().toString();
         String bloodgroup_s = bloodgroup.getText().toString();
         String eyesight_s = eyesight.getText().toString();
-
+String other_disability = disability_et.getText().toString();
 
         RadioButton selected_radio_button = findViewById(gender_radio_group.getCheckedRadioButtonId());
 
@@ -74,7 +86,7 @@ public class Userprofile extends AppCompatActivity {
             disabilty = "no";
         }
 
-        profiledata data = new profiledata(name_s , address_s, Integer.parseInt(age_s) ,Integer.parseInt(height_s),bloodgroup_s,eyesight_s , gender , disabilty);
+        profiledata data = new profiledata(name_s , address_s, Integer.parseInt(age_s) ,Integer.parseInt(height_s),bloodgroup_s,eyesight_s , gender , disabilty,other_disability) ;
 
         DatabaseReference database = FirebaseDatabase.getInstance().getReference();
 

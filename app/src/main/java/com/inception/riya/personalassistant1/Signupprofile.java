@@ -5,6 +5,8 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -19,11 +21,11 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 public class Signupprofile extends AppCompatActivity {
-    EditText name ,address,  age,height,bloodgroup,eyesight;
+    EditText name ,disability_et,address,  age,height,bloodgroup,eyesight;
 
     RadioGroup gender_radio_group ;
-
-    RadioButton disability_radio_btn , male_radio_btn , female_radio_btn , others_radio_btn;
+    CheckBox disability_radio_btn ;
+    RadioButton  male_radio_btn , female_radio_btn , others_radio_btn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +38,7 @@ public class Signupprofile extends AppCompatActivity {
         height = findViewById(R.id.height_et);
         bloodgroup = findViewById(R.id.blood_et);
         eyesight = findViewById(R.id.eyesight_et);
+        disability_et =findViewById(R.id.disability_et);
         disability_radio_btn = findViewById(R.id.disability_radio);
         gender_radio_group = findViewById(R.id.gender_radio_group);
 
@@ -83,8 +86,15 @@ public class Signupprofile extends AppCompatActivity {
                 if(recieved_data.disability.equals("yes"))
                 {
                     disability_radio_btn.setChecked(true);
-                }
+disability_et.setVisibility(View.VISIBLE);
+                disability_et.setText(recieved_data.other_disability);
 
+                }
+else {
+                    disability_radio_btn.setChecked(false);
+                    disability_et.setVisibility(View.GONE);
+
+                }
 
 
                 if(recieved_data.gender.equals("male"))
@@ -159,7 +169,7 @@ public class Signupprofile extends AppCompatActivity {
         String bloodgroup_s = bloodgroup.getText().toString();
         String eyesight_s = eyesight.getText().toString();
 
-
+        String other_disability = disability_et.getText().toString();
         RadioButton selected_radio_button = findViewById(gender_radio_group.getCheckedRadioButtonId());
 
         String gender =selected_radio_button.getText().toString();
@@ -175,7 +185,7 @@ public class Signupprofile extends AppCompatActivity {
             disabilty = "no";
         }
 
-        profiledata data = new profiledata(name_s , address_s, Integer.parseInt(age_s) ,Integer.parseInt(height_s),bloodgroup_s,eyesight_s , gender , disabilty);
+        profiledata data = new profiledata(name_s , address_s, Integer.parseInt(age_s) ,Integer.parseInt(height_s),bloodgroup_s,eyesight_s , gender , disabilty,other_disability) ;
 
         DatabaseReference database = FirebaseDatabase.getInstance().getReference();
 

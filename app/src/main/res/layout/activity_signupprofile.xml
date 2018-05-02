@@ -13,8 +13,7 @@
         android:layout_marginLeft="10dp"
         android:layout_marginTop="10dp"
         android:onClick="icon"
-        android:src="@drawable/ic_lefticon"
-        />
+        android:src="@drawable/ic_lefticon" />
 
     <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/profile_image"
@@ -181,13 +180,19 @@
         android:layout_marginTop="10dp"
         android:orientation="vertical">
 
-        <RadioButton
+        <CheckBox
             android:id="@+id/disability_radio"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Any other disability"
             android:textColor="#000" />
 
+        <EditText
+            android:id="@+id/disability_et"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Disability"
+            android:visibility="gone" />
 
     </LinearLayout>
 
@@ -199,25 +204,25 @@
         android:orientation="horizontal">
 
         <RadioButton
+            android:id="@+id/male"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="male"
-            android:textColor="#000"
-            android:id="@+id/male"/>
+            android:textColor="#000" />
 
         <RadioButton
+            android:id="@+id/female"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="female"
-            android:textColor="#000"
-            android:id="@+id/female"/>
+            android:textColor="#000" />
 
         <RadioButton
+            android:id="@+id/others"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="others"
-            android:textColor="#000"
-            android:id="@+id/others"/>
+            android:textColor="#000" />
     </RadioGroup>
 
     <Button
