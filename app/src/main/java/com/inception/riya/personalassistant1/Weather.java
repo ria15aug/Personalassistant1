@@ -18,6 +18,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.TimeZone;
 
@@ -119,8 +120,17 @@ public class Weather extends AppCompatActivity {
                      // give a timezone reference for formatting (see comment at the bottom)
                     TimeZone utc = TimeZone.getTimeZone("etc/UTC");
                     sdf.setTimeZone(utc);
-                    String formattedDate = sdf.format(date);
 
+
+
+                    Calendar calendar = Calendar.getInstance();
+                    calendar.setTime(date);
+                    calendar.add(Calendar.HOUR, 5);
+                    calendar.add(Calendar.MINUTE, 30);
+
+
+
+                    String formattedDate = sdf.format(calendar.getTime());
 
                     sunrise_et.setText(formattedDate);
 
